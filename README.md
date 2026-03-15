@@ -190,5 +190,5 @@ By combining LLM reasoning with verified metadata retrieval, the project explore
 # Author
 
 Juliana Mendes
-Data Scientist | AI Agent Systems | Open Data Research
+Data-Driven Business Development | Revenue Operations | Analytics
 
