@@ -1,48 +1,194 @@
 # CorrelAgent
-Correl-Agent is an advanced AI agent built on the LlamaIndex framework using the ReAct (Reasoning and Action) architecture. It acts as an autonomous researcher for the Netherlands' Open Data Portal (overheid.nl).
 
-Correl-Agent: Autonomous Data Discovery Specialist
-1. Overview
-Correl-Agent is an advanced AI agent built on the LlamaIndex framework using the ReAct (Reasoning and Action) architecture. It acts as an autonomous researcher for the Netherlands' Open Data Portal (overheid.nl).
+**Autonomous AI Agent for Discovering Relationships in Dutch Open Data**
 
-Unlike standard search tools, this agent interprets user intent, queries a localized vector catalog, scrapes live metadata from web URLs, and formulates a grounded analytical plan based on real-world variables.
+CorrelAgent is an AI-powered research assistant designed to explore datasets from the Netherlands Open Data ecosystem.
+Built with modern LLM infrastructure, the agent autonomously discovers relevant datasets, extracts metadata, and proposes grounded analytical strategies for correlation and exploratory analysis.
 
-2. Technical Stack & Architecture
-Reasoning Engine: ReAct Agent loop for multi-step problem solving.
+The goal is to help analysts, researchers, and civic-tech communities **quickly identify relationships between public variables** using the Dutch Open Data Portal.
 
-Orchestration: LlamaIndex (Data Framework for LLMs).
+---
 
-LLM & Inference: Llama 3.1 (via Groq) for high-speed, low-latency reasoning.
+# Overview
 
-Vector Search: Persistent VectorStoreIndex with Multilingual-E5 embeddings for semantic precision.
+CorrelAgent is built using a **Reasoning + Action architecture (ReAct)** that allows the system to:
 
-Live Web Scraping: SimpleWebPageReader for real-time extraction of Dutch dataset descriptions (Beschrijving).
+* Understand analytical questions in natural language
+* Search structured dataset catalogs
+* Retrieve metadata from real dataset sources
+* Propose possible analytical paths based on verified variables
 
-3. Key Features
-Intent Mapping: Translates natural language questions (e.g., "correlation between unemployment and education") into specific data search queries.
+Instead of acting as a simple search tool, CorrelAgent behaves like a **data discovery researcher**.
 
-Fact-Grounded Planning: Explicitly avoids "hallucinating" variables; the agent only suggests analysis based on verified metadata.
+Example question:
 
-Automated Workflow: Orchestrates three custom tools: search_catalog, read_dataset_details, and analyze_and_plan.
+> *“Is there a relationship between unemployment levels and education indicators in Dutch regions?”*
 
-4. Roadmap & Future Enhancements (Vision)
-User Experience (UI/UX)
-Streamlit Interactive Dashboard: Transitioning from a CLI to a web-based interface where users can view the agent’s "thought process" logs and interactive data cards.
+The agent will:
 
-Multilingual Support: Enhancing the agent’s ability to bridge the gap between English queries and Dutch metadata.
+1. Search the dataset catalog
+2. Identify relevant datasets
+3. Retrieve metadata directly from the source
+4. Suggest possible variables for correlation analysis
 
-Community Integration: Developing a Slack/Discord bot interface for real-time collaborative data discovery.
+---
 
-Deployment & Scalability
-Dockerization: Containerizing the environment to ensure seamless deployment across cloud providers.
+# Architecture
 
-Serverless Architecture: Deploying via AWS Lambda or Google Cloud Functions to optimize costs and trigger execution via API webhooks.
+The system combines modern AI orchestration tools with semantic search.
 
-CI/CD Pipeline: Implementing automated testing for tool reliability and index updates.
+### Core Components
 
-5. Quick Start
-Dependencies: pip install llama-index llama-index-llms-groq llama-index-embeddings-huggingface nest-asyncio
+**Reasoning Engine**
 
-Configuration: Place catalog_overheid.csv in the root directory and export your GROQ_API_KEY.
+ReAct agent loop for multi-step reasoning and tool execution.
 
-Execution: Run the script to initiate the asynchronous agent workflow.
+**Agent Framework**
+
+LlamaIndex orchestrates the data pipeline and tool interaction.
+
+**Language Model**
+
+Llama 3.1 running through Groq for fast inference and reasoning.
+
+**Semantic Search**
+
+VectorStoreIndex with multilingual E5 embeddings enables semantic retrieval across dataset descriptions.
+
+**Live Metadata Extraction**
+
+The agent reads real dataset descriptions from overheid.nl using a web scraping reader.
+
+---
+
+# Key Features
+
+### Intelligent Dataset Discovery
+
+The agent translates natural language questions into structured dataset searches.
+
+### Fact-Grounded Analysis
+
+CorrelAgent avoids hallucinating variables.
+All analytical suggestions are derived from real dataset metadata.
+
+### Autonomous Tool Workflow
+
+The agent orchestrates a multi-step workflow using three custom tools:
+
+* `search_catalog`
+* `read_dataset_details`
+* `analyze_and_plan`
+
+---
+
+# Project Architecture
+
+```
+User Question
+      ↓
+ReAct Agent
+      ↓
+Catalog Search Tool
+      ↓
+Dataset Metadata Extraction
+      ↓
+Analysis Planning
+      ↓
+Suggested Analytical Strategy
+```
+
+---
+
+# Roadmap
+
+## User Experience
+
+**Interactive Dashboard**
+
+Future versions will include a Streamlit interface where users can:
+
+* visualize the agent reasoning process
+* inspect dataset cards
+* interactively explore discovered variables
+
+**Multilingual Support**
+
+Improved handling of English queries against Dutch dataset metadata.
+
+**Community Integration**
+
+Potential Slack or Discord interface to support collaborative data discovery within research communities.
+
+---
+
+## Deployment
+
+**Docker**
+
+Containerized environment for reproducible deployments.
+
+**Serverless Execution**
+
+Planned deployment options:
+
+* AWS Lambda
+* Google Cloud Functions
+
+This will allow the agent to run as an API endpoint triggered by webhooks.
+
+**CI/CD Pipeline**
+
+Future versions will include automated testing for:
+
+* dataset catalog updates
+* tool reliability
+* index refresh
+
+---
+
+# Quick Start
+
+### Install dependencies
+
+```
+pip install llama-index llama-index-llms-groq llama-index-embeddings-huggingface nest-asyncio
+```
+
+### Configure environment
+
+Place the dataset catalog file in the root directory:
+
+```
+catalog_overheid.csv
+```
+
+Then configure your API key:
+
+```
+export GROQ_API_KEY=your_api_key
+```
+
+### Run the agent
+
+```
+python agent3_pilot_test.py
+```
+
+The agent will start the reasoning loop and begin interacting with the dataset catalog.
+
+---
+
+# Vision
+
+CorrelAgent aims to become a **data discovery layer for open government data**, helping analysts and civic-tech communities quickly identify relationships between public datasets.
+
+By combining LLM reasoning with verified metadata retrieval, the project explores how AI agents can support **evidence-based public data analysis**.
+
+---
+
+# Author
+
+Juliana Mendes
+Data Scientist | AI Agent Systems | Open Data Research
+
